@@ -1,11 +1,17 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
+//Это два компонента из MainMenu, ораньжевый и розовый блок
+import Restourant from "./MainMenu/Restourant";
+import Concert from "./MainMenu/Concert";
 
+
+//Компоненты мы передаем как HTML елементы
 const Feed = () => {
     return (
         <View style = { styles.container }>
-            <Text> Feed </Text>
+            <Restourant />
+            <Concert />
         </View>
     )
 }
