@@ -14,22 +14,29 @@ const AppNavigator = createBottomTabNavigator({ //Создаем тулбар
         //screen отвечает за действие после нажатия, в данном примере он открывает страницу Fav
         screen: Fav,
         navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                    name="stars"
-                    color={'grey'}
-                    size={35}
-                />
-            )
+            tabBarIcon: ({ focused }) => {
+                const image = focused
+                ? require('../pictures/fave_active.png')
+                : require('../pictures/fave.png')
+                return (
+                    <Image 
+                        source={image}
+                        style={{width: 35, height: 35}}
+                    />
+                )
+            }
         })
     },
     Feed: {
         screen: Feed,
         navigationOptions: () => ({
             tabBarIcon: ({ focused }) => {
+                const image = focused
+                ? require('../pictures/events_active.png')
+                : require('../pictures/events.png')
                 return (
                     <Image 
-                        source={require('../pictures/events.png')}
+                        source={image}
                         style={{width: 35, height: 35}}
                     />
                 )
@@ -40,16 +47,20 @@ const AppNavigator = createBottomTabNavigator({ //Создаем тулбар
         screen: Profile,
         navigationOptions: () => ({
             tabBarIcon: ({ focused }) => {
+                const image = focused
+                ? require('../pictures/profile_active.png')
+                : require('../pictures/profile.png')
                 return (
                     <Image 
-                        source={require('../pictures/profile.png')}
+                        source={image}
                         style={{width: 35, height: 35}}
                     />
                 )
             }
         })
     }
-})
+},
+);
 
 //Функция контейнер, в которую мы передаем нам ToolBar
 export default createAppContainer(AppNavigator) //Готовимся принять эту функцию в App.js
